@@ -16,10 +16,19 @@ var map = new ol.Map({
 		zoom: 4
 	})
 });
-var kml = new ol.layer.Vector({
+/*var kml = new ol.layer.Vector({
 	source: new ol.source.Vector({
 		url: './data/bjline.kml',
 		format: new ol.format.KML()
 	})
+});*/
+var xyz = new ol.layer.Tile({
+  source: new ol.source.XYZ({
+    attributions: [new ol.Attribution({
+		html: 'Railway tiles rendered by Luke, hosted by GitHub.'
+	})],
+    url: './testtile/{z}/{x}/{y}.png'
+  })
 });
-map.addLayer(kml);
+//map.addLayer(kml);
+map.addLayer(xyz);
