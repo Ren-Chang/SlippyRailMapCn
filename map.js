@@ -3,7 +3,7 @@ var raster;
 raster = new ol.layer.Tile({
       source: new ol.source.XYZ({
         url: 'http://s.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
-        attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
+        attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://cartodb.com/attributions">CartoDB.</a>'] })]
       })
     })
 /*var parser = new ol.format.WMTSCapabilities();
@@ -32,7 +32,7 @@ raster = new ol.layer.Tile({
 	var xyz = new ol.layer.Tile({
 	  source: new ol.source.XYZ({
 		attributions: [new ol.Attribution({
-			html: '<a href="http://github.com/Ren-Chang">Ren Chang</a>'
+			html: ' <a href="http://weibo.com/u/3513941704">贵广十标段</a>, <a href="http://github.com/Ren-Chang">任畅</a>.'
 		})],
 		url: './tiles/{z}/{x}/{y}.png'
 	  })
