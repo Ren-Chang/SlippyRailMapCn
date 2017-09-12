@@ -40,12 +40,22 @@ var boundary = new ol.layer.Tile({
 		attributions: [new ol.Attribution({
 			html: '&copy; <a href="http://map.tianditu.com/help/contract/contract.html">MapWorld</a>'
 		})],
-		url: 'http://zhfw.tianditu.com/gisserver/ZHFW/wms',
+		url: 'https://zhfw.tianditu.com/gisserver/ZHFW/wms',
 		params: {'LAYERS':'030100','FORMAT':'image/png','TRANSPARENT':'true','TILED':true}
 	}),
 	title: 'China boundary', crossOrigin: null,
-	extent: ol.proj.transformExtent([73,1,135,55],'EPSG:4326','EPSG:3857')
+	extent: ol.proj.transformExtent([73,1,135,55],'EPSG:4326','EPSG:3857'),
+	opacity: 0.7
 });
+boundary.on('precompose', function(e){
+	var ctx = e.context;
+	ctx.save();
+	ctx.filter = 'hue-rotate(' + 210 + 'deg)';
+})
+boundary.on('postcompose', function(e){
+	e.context.restore();
+})
+
 var base = new ol.layer.Group({
 	title: 'Base maps',
 	layers: [cartodb, terrain, imagery]
