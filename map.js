@@ -69,13 +69,19 @@ map = new ol.Map({
 	controls: ol.control.defaults({
 		attributionOptions:({
 			collapsible: false
-		})
+		}),
+		rotate: false
 	}),
 	layers: [base, overlay],
 	target: document.getElementById('map'),
 	view: new ol.View({
 		center: ol.proj.fromLonLat([105, 35]),
-		zoom: 4
+		zoom: 4, 
+		enableRotation: false
+	}),
+	interactions: ol.interaction.defaults({
+		altShiftDragRotate:false, 
+		pinchRotate:false
 	})
 });
 var layerSwitcher = new ol.control.LayerSwitcher({
