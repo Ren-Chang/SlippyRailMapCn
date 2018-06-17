@@ -30,7 +30,7 @@ rail = new ol.layer.Tile({
 		attributions: [new ol.Attribution({
 			html: 'Rail data 2017 <a href="http://weibo.com/u/3513941704">贵广十标段</a>, tile <a href="http://github.com/Ren-Chang">任畅</a>.'
 		})],
-		url: 'http://oogkf4i1x.bkt.clouddn.com/r17b/{z}/{x}/{y}.png?v=20171119'
+		url: 'http://oogkf4i1x.bkt.clouddn.com/2018a/{z}/{x}/{y}.png'
 	}),
 	title: 'China railway',
 	extent: ol.proj.transformExtent([75.9659042903028,18.2916806610885,134.51125735793,53.0040163201993],'EPSG:4326','EPSG:3857')
