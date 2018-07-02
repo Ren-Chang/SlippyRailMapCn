@@ -9,7 +9,7 @@ cartodb = new ol.layer.Tile({
 });
 terrain = new ol.layer.Tile({
 	source: new ol.source.XYZ({
-		url: 'http://t{0-1}.tianditu.com/ter_w/wmts?' + 
+		url: 'https://t{0-1}.tianditu.gov.cn/ter_w/wmts?' + 
 			'service=WMTS&request=GetTile&version=1.0.0&layer=ter&style=default&format=tiles&' + 
 			'tileMatrixSet=w&tileMatrix={z}&tileRow={y}&tileCol={x}',
 		attributions: [new ol.Attribution({ html: '&copy; <a href="http://map.tianditu.com/help/contract/contract.html">MapWorld</a>'})]
@@ -18,7 +18,7 @@ terrain = new ol.layer.Tile({
 });
 imagery = new ol.layer.Tile({
 	source: new ol.source.XYZ({
-		url: 'http://t{0-1}.tianditu.com/img_w/wmts?' + 
+		url: 'https://t{0-1}.tianditu.gov.cn/img_w/wmts?' + 
 			'service=WMTS&request=GetTile&version=1.0.0&layer=img&style=default&format=tiles&' + 
 			'tileMatrixSet=w&tileMatrix={z}&tileRow={y}&tileCol={x}',
 		attributions: [new ol.Attribution({ html: '&copy; <a href="http://map.tianditu.com/help/contract/contract.html">MapWorld</a>'})]
@@ -40,7 +40,7 @@ var boundary = new ol.layer.Tile({
 		attributions: [new ol.Attribution({
 			html: '&copy; <a href="http://map.tianditu.com/help/contract/contract.html">MapWorld</a>'
 		})],
-		url: 'https://zhfw.tianditu.com/gisserver/ZHFW/wms',
+		url: 'https://zhfw.tianditu.gov.cn/gisserver/ZHFW/wms',
 		params: {'LAYERS':'030100','FORMAT':'image/png','TRANSPARENT':'true','TILED':true}
 	}),
 	title: 'China boundary', crossOrigin: null,
