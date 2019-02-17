@@ -3,7 +3,7 @@ var cartodb, terrain, imagery, rail;
 cartodb = new ol.layer.Tile({
 	source: new ol.source.XYZ({
 		url: 'http://s.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
-		attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://cartodb.com/attributions">CartoDB.</a>'] })]
+		attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="https://carto.com/attribution">CartoDB.</a>'] })]
 	}),
 	visible: true, type: 'base', title: 'CartoDB light'
 });
@@ -11,8 +11,9 @@ terrain = new ol.layer.Tile({
 	source: new ol.source.XYZ({
 		url: 'https://t{0-1}.tianditu.gov.cn/ter_w/wmts?' + 
 			'service=WMTS&request=GetTile&version=1.0.0&layer=ter&style=default&format=tiles&' + 
-			'tileMatrixSet=w&tileMatrix={z}&tileRow={y}&tileCol={x}',
-		attributions: [new ol.Attribution({ html: '&copy; <a href="http://map.tianditu.com/help/contract/contract.html">MapWorld</a>'})]
+			'tileMatrixSet=w&tileMatrix={z}&tileRow={y}&tileCol={x}&tk=462b67df67e3c81d60140b1ebda58bc2', //remove once key is no longer free
+		attributions: [new ol.Attribution({ html: '<a href="http://www.tianditu.gov.cn/about/contact.html?type=3">&copy;</a> '
+		 + '<a href="http://www.tianditu.gov.cn">天地图</a>, <a href="http://www.tianditu.gov.cn/about/contact.html?type=2">terms</a>'})]
 	}),
 	visible: false, type: 'base', title: 'MapWorld terrain'
 });
@@ -20,15 +21,16 @@ imagery = new ol.layer.Tile({
 	source: new ol.source.XYZ({
 		url: 'https://t{0-1}.tianditu.gov.cn/img_w/wmts?' + 
 			'service=WMTS&request=GetTile&version=1.0.0&layer=img&style=default&format=tiles&' + 
-			'tileMatrixSet=w&tileMatrix={z}&tileRow={y}&tileCol={x}',
-		attributions: [new ol.Attribution({ html: '&copy; <a href="http://map.tianditu.com/help/contract/contract.html">MapWorld</a>'})]
+			'tileMatrixSet=w&tileMatrix={z}&tileRow={y}&tileCol={x}&tk=462b67df67e3c81d60140b1ebda58bc2', //remove once key is no longer free
+		attributions: [new ol.Attribution({ html: '<a href="http://www.tianditu.gov.cn/about/contact.html?type=3">&copy;</a> '
+		+ '<a href="http://www.tianditu.gov.cn">天地图</a>, <a href="http://www.tianditu.gov.cn/about/contact.html?type=2">terms</a>'})]
 	}),
 	visible: false, type: 'base', title: 'MapWorld imagery'
 });
 rail = new ol.layer.Tile({
 	source: new ol.source.XYZ({
 		attributions: [new ol.Attribution({
-			html: 'Rail data 2017 <a href="http://weibo.com/u/3513941704">贵广十标段</a>, tile <a href="http://github.com/Ren-Chang">任畅</a>.'
+			html: 'Rail data 2018b <a href="http://weibo.com/u/3513941704">贵广十标段</a>, tile <a href="http://github.com/Ren-Chang">任畅</a>.'
 		})],
 		url: 'http://tile.renchang.me/{z}/{x}/{y}.png'
 	}),
@@ -37,10 +39,9 @@ rail = new ol.layer.Tile({
 });
 var boundary = new ol.layer.Tile({
 	source: new ol.source.TileWMS({
-		attributions: [new ol.Attribution({
-			html: '&copy; <a href="http://map.tianditu.com/help/contract/contract.html">MapWorld</a>'
-		})],
-		url: 'https://zhfw.tianditu.gov.cn/gisserver/ZHFW/wms',
+		attributions: [new ol.Attribution({ html: '<a href="http://www.tianditu.gov.cn/about/contact.html?type=3">&copy;</a> '
+		+ '<a href="http://www.tianditu.gov.cn">天地图</a>, <a href="http://www.tianditu.gov.cn/about/contact.html?type=2">terms</a>'})],
+		url: 'http://gisserver.tianditu.gov.cn/TDTService/region/wms', //only support http, service unreliable for wrong domain in GetCapabilities
 		params: {'LAYERS':'030100','FORMAT':'image/png','TRANSPARENT':'true','TILED':true}
 	}),
 	title: 'China boundary', crossOrigin: null,
