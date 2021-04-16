@@ -14,7 +14,7 @@
 			  z-index: 1;
 			  top: 0;
 			  right: 0;
-			  /* background-color: #111; */
+			  background-color: #eee;
 			  overflow-x: hidden;
 			  transition: 0.5s;
 			  padding-top: 60px;
@@ -43,37 +43,31 @@
 				position: relative;
 				transition: margin-right .5s
 			}
-			
-			/* .sidebar a {
-			  padding: 8px 8px 8px 32px;
-			  text-decoration: none;
-			  font-size: 25px;
-			  color: #818181;
-			  display: block;
-			  transition: 0.3s;
-			}
-			
-			.sidebar a:hover {
-			  color: #f1f1f1;
-			} 
-			
-			.sidebar .closebtn {
-			  position: absolute;
-			  bottom: 0;
-			  left: 25px;
-			  font-size: 36px;
-			  margin-left: 50px;
-			}
-			
 			#main {
 			  transition: margin-right .5s;
 			  padding: 16px;
 			}*/
 			
-			/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-			@media screen and (max-height: 450px) {
-			  .sidebar {padding-top: 15px;}
-			  .sidebar a {font-size: 18px;}
+			.legend-item {
+				margin-left: 1em;
+				margin-bottom: 0.2em;
+			}
+			.legend-item svg {
+				/* height="14" width="50" style="margin: 5px 2px 5px 2px" */
+				height: 14;
+				width: 50;
+				margin: 5px 2px 5px 2px;
+				vertical-align: bottom;
+			}
+			.legend-item svg text {
+				fill: rgb(0,77,168);
+				stroke-width: 1pt;
+				stroke: white;
+				paint-order: stroke;
+			}
+			.legend-item div {
+				font-size: 14px;
+				display: inline;
 			}
 			</style>
 		<script src="./dependency/jquery-1.11.2.min.js"></script>
@@ -94,11 +88,89 @@
     </head>
 	<body>
 		<div id="mySidebar" class="sidebar">
-			<!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
-			<!-- <a href="#">About</a>
-			<a href="#">Services</a>
-			<a href="#">Clients</a>
-			<a href="#">Contact</a> -->
+		  <div style="padding-left: 1em;">
+			<h4>图例</h4>
+			<h5>线路</h5>
+			<div class="legend-item">
+				<svg>
+					<path d="M 0,12 H 50" stroke="rgb(0,77,168)" stroke-width="2"></path>
+					<text style="font-family: 'Source Han Sans SC Light';font-size: 10px;
+					fill:rgb(0,77,168)" x="1" y="8">京沪高速线</text>
+				</svg>
+				<div>300km/h及以上复线</div>
+			</div>
+			<div class="legend-item">
+				<svg>
+					<path d="M 0,12 H 50" stroke="rgb(102,119,205)" stroke-width="2"></path>
+					<text style="font-family: 'Source Han Sans SC Light';font-size: 10px;
+					fill:rgb(102,119,205)" x="11" y="8">杭深线</text>
+				</svg>
+				<div>250km/h复线</div>
+			</div>
+			<div class="legend-item">
+				<svg>
+					<path d="M 0,12 H 50" stroke="rgb(115,196,98)" stroke-width="2"></path>
+					<text style="font-family: 'Source Han Sans SC Light';font-size: 10px;
+					fill:rgb(115,196,98)" x="1" y="8">广珠城际线</text>
+				</svg>
+				<div>160及200km/h复线</div>
+			</div>
+			<div class="legend-item">
+				<svg>
+					<path d="M 0,12 H 50" stroke="rgb(100,100,100)" stroke-width="2"></path>
+					<text style="font-family: 'Source Han Sans SC Light';font-size: 10px;
+					fill:rgb(100,100,100)" x="11" y="8">益湛线</text>
+				</svg>
+				<div>160km/h以下复线</div>
+			</div>
+			<div class="legend-item">
+				<svg>
+					<path d="M 0,1 H 50" stroke="rgb(0,77,168)" stroke-width="1"></path>
+					<path d="M 0,5 H 50" stroke="rgb(102,119,205)" stroke-width="1"></path>
+					<path d="M 0,9 H 50" stroke="rgb(115,196,98)" stroke-width="1"></path>
+					<path d="M 0,13 H 50" stroke="rgb(100,100,100)" stroke-width="1"></path>
+				</svg>
+				<div>各速度等级单线</div>
+			</div>
+			<div class="legend-item">
+				<svg>
+					<path d="M 0,1 H 50" stroke="rgb(0,77,168)" stroke-width="2" stroke-dasharray="5, 3"></path>
+					<path d="M 0,5 H 50" stroke="rgb(102,119,205)" stroke-width="1" stroke-dasharray="5, 3"></path>
+					<path d="M 0,9 H 50" stroke="rgb(115,196,98)" stroke-width="2" stroke-dasharray="5, 3"></path>
+					<path d="M 0,13 H 50" stroke="rgb(100,100,100)" stroke-width="1" stroke-dasharray="5, 3"></path>
+				</svg>
+				<div>在建线路</div>
+			</div>
+			<h5>车站所在地行政等级</h5>
+			<div class="legend-item">
+				<svg>
+					<rect y="2" height="10" width="10" fill="rgb(0,77,168)"></rect>
+					<text style="font-family: 'SimHei Regular';font-size: 12px;" x="10" y="12">上海</text>
+				</svg>
+				<div>省会车站</div>
+			</div>
+			<div class="legend-item">
+				<svg>
+					<rect y="4" height="7" width="7" fill="rgb(0,77,168)"></rect>
+					<text style="font-family: 'SimHei Regular';font-size: 10px;stroke: rgb(222,222,222)" x="10" y="12">海拉尔</text>
+				</svg>
+				<div>地级车站</div>
+			</div>
+			<div class="legend-item">
+				<svg>
+					<rect y="5" height="5" width="5" fill="rgb(0,77,168)"></rect>
+					<text style="font-family: 'Source Han Serif SC Regular';font-size: 10px;" x="10" y="12">阿克陶</text>
+				</svg>
+				<div>县级车站</div>
+			</div>
+			<div class="legend-item">
+				<svg>
+					<rect y="5" height="5" width="5" fill="rgb(0,77,168)"></rect>
+					<text style="font-family: 'Source Han Serif SC Regular';font-size: 8px; fill: black;" x="10" y="12">天涯海角</text>
+				</svg>
+				<div>乡镇车站</div>
+			</div>
+		  </div>
 		</div>
 		
 		<div id="map">
