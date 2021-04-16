@@ -6,6 +6,76 @@
 		<link rel="shortcut icon" href="./favicon.ico"/>
 		<meta name="description" content="A tile map of China railway network in test phase.">
 		<meta name="keywords" content="railway map">
+		<style>
+			.sidebar {
+			  height: 100%;
+			  width: 0;
+			  position: fixed;
+			  z-index: 1;
+			  top: 0;
+			  right: 0;
+			  /* background-color: #111; */
+			  overflow-x: hidden;
+			  transition: 0.5s;
+			  padding-top: 60px;
+			}
+			
+			.keybtn {
+			  position: absolute;
+			  right: 0px;
+			  bottom: 2em;
+			  font-size: 20px;
+			  z-index: 1;
+			  cursor: pointer;
+			  background-color: #666;
+			  color: white;
+			  border-top-left-radius: 2mm;
+			  border-bottom-left-radius: 2mm;
+			  padding: 10px 15px;
+			  border: none;
+			}
+			
+			.keybtn:hover {
+			  background-color: #999;
+			}
+			
+			#map {
+				position: relative;
+				transition: margin-right .5s
+			}
+			
+			/* .sidebar a {
+			  padding: 8px 8px 8px 32px;
+			  text-decoration: none;
+			  font-size: 25px;
+			  color: #818181;
+			  display: block;
+			  transition: 0.3s;
+			}
+			
+			.sidebar a:hover {
+			  color: #f1f1f1;
+			} 
+			
+			.sidebar .closebtn {
+			  position: absolute;
+			  bottom: 0;
+			  left: 25px;
+			  font-size: 36px;
+			  margin-left: 50px;
+			}
+			
+			#main {
+			  transition: margin-right .5s;
+			  padding: 16px;
+			}*/
+			
+			/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+			@media screen and (max-height: 450px) {
+			  .sidebar {padding-top: 15px;}
+			  .sidebar a {font-size: 18px;}
+			}
+			</style>
 		<script src="./dependency/jquery-1.11.2.min.js"></script>
 		<link rel="stylesheet" href="./dependency/css/bootstrap.min.css">
 		<script src="./dependency/bootstrap.min.js"></script>
@@ -23,7 +93,19 @@
         </script>
     </head>
 	<body>
-		<div id="map"></div>
+		<div id="mySidebar" class="sidebar">
+			<!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+			<!-- <a href="#">About</a>
+			<a href="#">Services</a>
+			<a href="#">Clients</a>
+			<a href="#">Contact</a> -->
+		</div>
+		
+		<div id="map">
+			<!-- <div id="main"> -->
+				<button class="keybtn" id="keybtn" onclick="toggleNav()">&#9776;</button>
+			<!-- </div> -->
+		</div>
 		<script src="./map.js"></script>
 	</body>
 </html>

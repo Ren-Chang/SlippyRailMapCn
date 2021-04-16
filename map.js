@@ -1,5 +1,17 @@
 var map;
 var cartodb, terrain, imagery, rail;
+function toggleNav() {
+	if (document.getElementById("mySidebar").offsetWidth === 0) {
+		document.getElementById("mySidebar").style.width = "250px";
+	    document.getElementById("map").style.marginRight = "250px";
+		document.getElementById("keybtn").innerHTML = '&times;';
+	} else {
+	    document.getElementById("mySidebar").style.width = "0";
+	    document.getElementById("map").style.marginRight= "0";
+		document.getElementById("keybtn").innerHTML = '&#9776;';
+	}
+}
+
 cartodb = new ol.layer.Tile({
 	source: new ol.source.XYZ({
 		url: 'http://s.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
