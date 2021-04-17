@@ -14,7 +14,7 @@ function toggleNav() {
 
 cartodb = new ol.layer.Tile({
 	source: new ol.source.XYZ({
-		url: 'http://s.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+		url: 'https://s.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
 		attributions: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="https://carto.com/attribution">CartoDB.</a>'
 	}),
 	visible: true, type: 'base', title: 'CartoDB light'
@@ -41,22 +41,23 @@ imagery = new ol.layer.Tile({
 });
 rail = new ol.layer.Tile({
 	source: new ol.source.XYZ({
-		attributions: 'Rail data 2018b <a href="http://weibo.com/u/3513941704">贵广十标段</a>, tile <a href="http://github.com/Ren-Chang">任畅</a>.',
+		attributions: 'Rail data 2021a <a href="http://weibo.com/u/3513941704">贵广十标段</a>, tile <a href="http://github.com/Ren-Chang">任畅</a>.',
 		url: 'http://tile.renchang.me/{z}/{x}/{y}.png'
 	}),
 	title: 'China railway',
 	extent: ol.proj.transformExtent([75.9659042903028,18.2916806610885,134.51125735793,53.0040163201993],'EPSG:4326','EPSG:3857')
 });
 var boundary = new ol.layer.Tile({
-	source: new ol.source.TileWMS({
+	source: new ol.source.XYZ({
 		attributions: '<a href="http://www.tianditu.gov.cn/about/contact.html?type=3">&copy;</a> '
 		+ '<a href="http://www.tianditu.gov.cn">天地图</a>, <a href="http://www.tianditu.gov.cn/about/contact.html?type=2">terms</a>',
-		url: 'http://gisserver.tianditu.gov.cn/TDTService/region/wms', //only support http, service unreliable for wrong domain in GetCapabilities
-		params: {'LAYERS':'030100','FORMAT':'image/png','TRANSPARENT':'true','TILED':true}
+		url: 'https://t{0-1}.tianditu.gov.cn/ibo_w/wmts?' + 
+		'service=WMTS&request=GetTile&version=1.0.0&layer=bou&style=default&format=tiles&' + 
+		'tileMatrixSet=w&tileMatrix={z}&tileRow={y}&tileCol={x}&tk=462b67df67e3c81d60140b1ebda58bc2'
 	}),
 	title: 'China boundary', crossOrigin: null,
 	extent: ol.proj.transformExtent([73,1,135,55],'EPSG:4326','EPSG:3857'),
-	opacity: 0.7
+	opacity: 0.7, visible: false
 });
 boundary.on('prerender', function(e){
 	var ctx = e.context;
