@@ -41,8 +41,9 @@ imagery = new ol.layer.Tile({
 });
 rail = new ol.layer.Tile({
 	source: new ol.source.XYZ({
-		attributions: 'Rail data 2021a <a href="http://weibo.com/u/3513941704">贵广十标段</a>, tile <a href="http://github.com/Ren-Chang">任畅</a>.',
-		url: 'http://tile.renchang.me/{z}/{x}/{y}.png'
+		attributions: 'Rail data 2023b <a href="http://weibo.com/u/3513941704">贵广十标段</a>, tile <a href="http://github.com/Ren-Chang">任畅</a>.',
+		url: 'https://tile.renchang.me/{z}/{x}/{y}.png',
+		tilePixelRatio: 2
 	}),
 	title: 'China railway',
 	extent: ol.proj.transformExtent([75.9659042903028,18.2916806610885,134.51125735793,53.0040163201993],'EPSG:4326','EPSG:3857')
@@ -52,12 +53,12 @@ var boundary = new ol.layer.Tile({
 		attributions: '<a href="http://www.tianditu.gov.cn/about/contact.html?type=3">&copy;</a> '
 		+ '<a href="http://www.tianditu.gov.cn">天地图</a>, <a href="http://www.tianditu.gov.cn/about/contact.html?type=2">terms</a>',
 		url: 'https://t{0-1}.tianditu.gov.cn/ibo_w/wmts?' + 
-		'service=WMTS&request=GetTile&version=1.0.0&layer=bou&style=default&format=tiles&' + 
+		'service=WMTS&request=GetTile&version=1.0.0&layer=ibo&style=default&format=tiles&' + 
 		'tileMatrixSet=w&tileMatrix={z}&tileRow={y}&tileCol={x}&tk=462b67df67e3c81d60140b1ebda58bc2'
 	}),
 	title: 'China boundary', crossOrigin: null,
 	extent: ol.proj.transformExtent([73,1,135,55],'EPSG:4326','EPSG:3857'),
-	opacity: 0.7, visible: false
+	opacity: 0.7 //, visible: false
 });
 boundary.on('prerender', function(e){
 	var ctx = e.context;
